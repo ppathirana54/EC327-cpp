@@ -1,0 +1,8 @@
+Enter command: Enter command: Enter command: 12
+Enter command: Enter command: Enter command: Enter command: 12345
+Enter command: Cannot add more characters
+Enter command: 12345
+Enter command: Enter command: Enter command: Enter command: Enter command: Enter command: The string is empty
+Enter command:
+Enter command: Enter command: 7
+Enter command: Exiting

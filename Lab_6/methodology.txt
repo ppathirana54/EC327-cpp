@@ -1,0 +1,78 @@
+In Console: gdb logf.out
+
+break 13
+break 17
+
+\\ created 2 breakpoints at the specified line locations
+
+run logf.out
+*** Log Finder ****
+"Please enter a number" > 3
+
+
+\\ ran the program with the breakpoint arguments
+
+Thread 1 hit Breakpoint 1, main () at logf.cpp:13
+13              float lognum = logf(num);
+
+(gdb) print &lognum 
+$1 = (float *) 0x61fe1c
+
+\\ran print &lognum to print address of variable on line 13
+
+(gdb) continue
+Continuing.
+
+\\continue to keep running the program to next breakpoint. 
+
+Thread 1 hit Breakpoint 2, main () at logf.cpp:17
+17          cout << "The natural logarithm of " << num << " is " << lognum << "." << endl;
+(gdb) print &lognum
+$2 = (float *) 0x61fe18
+
+\\ran print &lognum to print the address of the variable on line 17
+
+
+***********************************************************************
+
+The address of &lognum is changing because the variable lognum is being 
+redeclared during the execution of the if statement.  When redeclared the
+memory address of the variable changes. By changing line 13 of lognum from:
+        float lognum = logf(num);
+to:
+	lognum = logf(num);
+
+the memory address won't change. This can be verified with gdb.
+
+
+**************************************************************************
+
+In Console: gdb logf.out
+
+break 13
+break 17
+
+run
+
+*Log Finder*
+Please enter a number: > 3
+
+Thread 1 hit Breakpoint 1, main () at logf.cpp:13
+13              lognum = logf(num);
+(gdb) print &lognum
+$1 = (float *) 0x61fe1c
+(gdb) continue
+Continuing.
+
+
+Thread 1 hit Breakpoint 2, main () at logf.cpp:17
+17          cout << "The natural logarithm of " << num << " is " << lognum << "." << endl;
+(gdb) print &lognum
+$2 = (float *) 0x61fe1c
+
+
+
+************************************************************************************
+The address &lognum doesn't change with the edit to the code.
+
+

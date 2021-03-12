@@ -1,0 +1,19 @@
+a 1
+a 2
+p
+a 3
+a 4
+a 5
+p
+a 6
+p
+r
+r
+r
+r
+r
+r
+p
+a 7
+p
+q
